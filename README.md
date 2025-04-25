@@ -1,25 +1,38 @@
 # Image Stitching for Panorama Generation
 
-This project implements image stitching to create panoramas from multiple images using OpenCV and Gradio.
+![Panorama Banner](https://i.imgur.com/example.png)
 
-## Features
+## Overview
 
-- Feature detection using SIFT
-- Feature matching using FLANN matcher
-- Homography transformation
-- Image blending for seamless panoramas
-- User-friendly Gradio interface
+This project implements an advanced image stitching system to create panoramas from multiple images. It uses computer vision techniques including SIFT feature detection, FLANN-based feature matching, and homography transformation to seamlessly combine images.
 
-## Requirements
+### Key Features
+
+- **Intelligent Image Analysis**: Automatically analyzes and adjusts image parameters
+- **Advanced Feature Detection**: Scale-Invariant Feature Transform (SIFT)
+- **Robust Feature Matching**: FLANN-based matching with ratio test
+- **Multi-method Blending**: Average and multi-band blending options
+- **Interactive UI**: User-friendly Gradio interface
+- **Error Visualization**: Shows feature matches for better debugging
+- **Parameter Customization**: Manual controls for brightness, contrast, and blur
+
+## Installation
+
+### Prerequisites
 
 - Python 3.7+
 - OpenCV
 - NumPy
 - Gradio
 
-## Installation
+### Setup
 
-1. Clone this repository
+1. Clone this repository:
+```bash
+git clone https://github.com/YourUsername/image-stitching-panorama.git
+cd image-stitching-panorama
+```
+
 2. Install the required packages:
 ```bash
 pip install -r requirements.txt
@@ -27,29 +40,67 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. Run the application:
+### Running the Application
+
+1. Start the application:
 ```bash
 python app.py
 ```
 
-2. Open your web browser and navigate to the URL shown in the terminal (usually http://127.0.0.1:7860)
+2. Open your web browser and navigate to the URL shown (typically http://127.0.0.1:7860)
 
-3. Upload two images that you want to stitch together
-   - The images should have some overlapping areas for better results
-   - The images should be taken from the same position with different angles
+3. Use the interface to:
+   - Upload two images with overlapping regions
+   - Adjust processing parameters if needed
+   - Generate and view the panorama
+   - Save the result
 
-4. Click "Submit" to generate the panorama
+### Example Usage
 
-## How it Works
+The application provides controls for:
+- **Brightness Adjustment**: Enhance dark or bright images
+- **Contrast Adjustment**: Improve feature detection in low-contrast images
+- **Blur Amount**: Reduce noise in sharper images
+- **Blending Method**: Choose between average and multi-band blending
 
-1. The application detects keypoints and descriptors in both images using SIFT
-2. It matches the features between the two images
-3. Computes the homography matrix to transform one image to align with the other
-4. Warps and blends the images to create a seamless panorama
+## How It Works
 
-## Notes
+The image stitching process follows these steps:
 
-- For best results, use images with good overlap (30-50%)
-- Images should be taken from the same position
-- Avoid moving objects in the scene
-- Good lighting conditions help in feature detection 
+1. **Image Analysis**: Analyze brightness, contrast, and sharpness
+2. **Parameter Adjustment**: Automatically adjust processing parameters
+3. **Feature Detection**: Find distinctive points using SIFT
+4. **Feature Matching**: Match points between images using FLANN
+5. **Homography Estimation**: Calculate transformation matrix
+6. **Image Warping**: Transform and align images
+7. **Image Blending**: Seamlessly combine images
+
+## Technical Details
+
+### Adaptive Processing
+
+The system adapts to different image characteristics:
+- For dark images: Increases brightness
+- For low-contrast images: Enhances contrast
+- For noisy images: Applies appropriate blur
+
+### Error Handling
+
+Comprehensive error handling for common issues:
+- Insufficient features
+- Poor matches
+- Invalid homography
+- Processing errors
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- OpenCV library for computer vision algorithms
+- Gradio for the interactive interface 
