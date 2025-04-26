@@ -5,11 +5,11 @@
 ### Feature Matching Visualization
 
 #### Low Match Percentage - Different Subjects (2.40%)
-![Low Match Percentage](docs/images/feature_matching_tiger.jpg)
+![Low Match Percentage](https://raw.githubusercontent.com/Asfandyar1213/image-stitching-panorama/main/docs/images/feature_matching_tiger.jpg)
 *Feature matching between unrelated images (person and tiger) showing poor correspondence*
 
 #### High Match Percentage - Same Subject (100.00%)
-![High Match Percentage](docs/images/feature_matching_person.jpg)
+![High Match Percentage](https://raw.githubusercontent.com/Asfandyar1213/image-stitching-panorama/main/docs/images/feature_matching_person.jpg)
 *Feature matching between similar images showing excellent correspondence*
 
 ## Overview
@@ -35,11 +35,11 @@ This project provides a comprehensive solution for creating panoramic images fro
 The system evaluates the quality of matches between images to predict panorama success:
 
 #### Low Match Percentage (Different Images)
-![Low Match Percentage](docs/images/feature_matching_tiger.jpg)
+![Low Match Percentage](https://raw.githubusercontent.com/Asfandyar1213/image-stitching-panorama/main/docs/images/feature_matching_tiger.jpg)
 *Match percentage: 2.40% (13 of 542 possible matches) - Poor candidates for stitching*
 
 #### High Match Percentage (Similar Images)
-![High Match Percentage](docs/images/feature_matching_person.jpg)
+![High Match Percentage](https://raw.githubusercontent.com/Asfandyar1213/image-stitching-panorama/main/docs/images/feature_matching_person.jpg)
 *Match percentage: 100.00% (659 of 659 possible matches) - Excellent candidates for stitching*
 
 This match percentage feature helps users quickly determine if their images are suitable for creating panoramas.
