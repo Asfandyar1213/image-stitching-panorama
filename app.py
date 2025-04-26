@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import gradio as gr
 import os
+import argparse
 from datetime import datetime
 
 def analyze_image(image):
@@ -10,9 +11,9 @@ def analyze_image(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
     # Calculate image statistics
-    mean_intensity = np.mean(gray)
-    std_intensity = np.std(gray)
-    blur_value = cv2.Laplacian(gray, cv2.CV_64F).var()
+    mean_intensity = np.mean(gray)#brightness
+    std_intensity = np.std(gray)#pixels
+    blur_value = cv2.Laplacian(gray, cv2.CV_64F).var()#edges
     
     # Determine optimal parameters
     brightness = 0
@@ -156,6 +157,11 @@ def stitch_images(image1, image2, blend_method="average"):
         # Match features
         matches = match_features(desc1, desc2)
         
+        # Calculate match percentage
+        total_possible_matches = min(len(kp1), len(kp2))
+        match_percentage = (len(matches) / total_possible_matches) * 100
+        match_info = f"Match percentage: {match_percentage:.2f}% ({len(matches)} of {total_possible_matches} possible matches)"
+        
         if len(matches) < 4:
             return None, None, f"Not enough good matches found ({len(matches)} matches)"
         
@@ -236,7 +242,7 @@ def stitch_images(image1, image2, blend_method="average"):
             blended = (warped_img1 * weight1[..., np.newaxis] + 
                       warped_img2 * weight2[..., np.newaxis]).astype(np.uint8)
         
-        return blended, matches_vis, "Success"
+        return blended, matches_vis, f"Success. {match_info}"
     except Exception as e:
         return None, None, f"Error during stitching: {str(e)}"
 
@@ -340,4 +346,19 @@ with gr.Blocks(title="Image Stitching for Panorama Generation") as iface:
     )
 
 if __name__ == "__main__":
-    iface.launch(share=True) 
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="Image Stitching for Panorama Generation")
+    parser.add_argument("--port", type=int, default=7860, help="Port to run the application on")
+    parser.add_argument("--host", type=str, default="127.0.0.1", help="Host to run the application on")
+    parser.add_argument("--share", action="store_true", help="Create a public link for sharing")
+    parser.add_argument("--debug", action="store_true", help="Run in debug mode")
+    parser.add_argument("--server-name", type=str, default=None, help="Server name for running on a specific server")
+    args = parser.parse_args()
+    
+    # Launch the interface with the specified parameters
+    iface.launch(
+        server_name=args.server_name,
+        server_port=args.port,
+        share=args.share,
+        debug=args.debug
+    ) 
