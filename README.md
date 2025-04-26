@@ -1,6 +1,16 @@
 # Image Stitching for Panorama Generation
 
-![Panorama Generation](https://i.imgur.com/example.png)
+## Screenshots
+
+### Feature Matching Visualization
+
+#### Low Match Percentage - Different Subjects (2.40%)
+![Low Match Percentage](docs/images/feature_matching_tiger.jpg)
+*Feature matching between unrelated images (person and tiger) showing poor correspondence*
+
+#### High Match Percentage - Same Subject (100.00%)
+![High Match Percentage](docs/images/feature_matching_person.jpg)
+*Feature matching between similar images showing excellent correspondence*
 
 ## Overview
 
