@@ -18,6 +18,22 @@ This project provides a comprehensive solution for creating panoramic images fro
 - **Parameter Customization**: Fine-tune brightness, contrast, and blur for optimal results
 - **Command-line Flexibility**: Run with custom ports, hosts, and sharing options
 
+## Demonstration
+
+### Feature Matching Quality Assessment
+
+The system evaluates the quality of matches between images to predict panorama success:
+
+#### Low Match Percentage (Different Images)
+![Low Match Percentage](docs/images/feature_matching_tiger.jpg)
+*Match percentage: 2.40% (13 of 542 possible matches) - Poor candidates for stitching*
+
+#### High Match Percentage (Similar Images)
+![High Match Percentage](docs/images/feature_matching_person.jpg)
+*Match percentage: 100.00% (659 of 659 possible matches) - Excellent candidates for stitching*
+
+This match percentage feature helps users quickly determine if their images are suitable for creating panoramas.
+
 ## Installation
 
 ### Prerequisites
